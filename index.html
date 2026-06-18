@@ -553,7 +553,7 @@
         var isMobile = matchMedia('(max-width: 767px), (pointer: coarse)').matches;
         var mount = document.createElement('div');
         mount.id = 'usMount';
-        mount.style.cssText = 'position:absolute;inset:0';
+        mount.style.cssText = 'position:absolute;inset:0;transform:translateY(-500px)';
         box.appendChild(mount);
 
         function fallback() { box.style.background = 'radial-gradient(60vw 60vw at 70% 18%, rgba(37,99,235,.30), transparent 60%)'; }
