@@ -550,8 +550,8 @@
             elementId: 'usMount',
             filePath: 'scene-no-ripple.json',     // self-hosted cleaned scene (ripple removed at source)
             fps: isMobile ? 45 : 60,               // mobile fps cap (45 = smoother than 30, ~50% more work)
-            scale: 1,                              // keep FULL render res — scale<1 was the pixelation cause
-            dpi: isMobile ? 1 : 1.5,               // mobile pixel-ratio cap — big GPU save, stays crisp at scale 1
+            scale: 1,                              // original render scale
+            dpi: 1.5,                              // original dpi — same for all devices
             lazyLoad: false,
             production: true,
             interactivity: { mouse: { disableMobile: false, disabled: false } }
