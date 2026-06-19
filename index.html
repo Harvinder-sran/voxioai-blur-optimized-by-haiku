@@ -68,7 +68,7 @@
        JS fills #vxLayers with moving blue blobs. They wander on quasi-random paths, rotate &
        stretch, and react to the pointer. White wash keeps the headline (left) readable; the
        whole thing fades out below the hero. -->
-  <div id="vxbg" class="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+  <div id="vxbg" class="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#f3f5f8]"
        style="-webkit-mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 100%)">
     <div id="vxLayers" class="absolute inset-0"></div>
     <!-- white wash so the headline (left) stays clean and bright -->
@@ -306,14 +306,14 @@
         <div class="vx-reveal rounded-[1.75rem] bg-white/72 border border-white p-5 sm:p-6 shadow-[0_18px_44px_-30px_rgba(15,23,42,0.35),inset_0_1px_0_white]">
           <div class="flex items-center gap-3">
             <span class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500 shadow-[inset_0_1px_0_white]"><iconify-icon icon="solar:phone-calling-rounded-linear" style="stroke-width:1.5;" class="text-2xl"></iconify-icon></span>
-            <div><h3 class="text-base font-medium text-slate-900">Talk to a live agent now</h3><p class="text-xs text-slate-400 font-light">No signup · in your browser</p></div>
+            <div><h3 class="text-base font-medium text-slate-900">Talk to a live agent now</h3><p class="text-xs text-slate-400 font-light">Quick signup · in your browser</p></div>
           </div>
           <div class="mt-5">
             <div class="flex items-center justify-between text-xs text-slate-500 mb-1.5"><span class="font-light">Free demo minutes</span><span class="mono text-slate-700">3:00 / 3:00</span></div>
             <div class="h-2 rounded-full bg-slate-200/80 overflow-hidden shadow-[inset_0_1px_2px_rgba(15,23,42,0.08)]"><div class="h-full w-full rounded-full bg-gradient-to-r from-blue-400 to-blue-600"></div></div>
           </div>
-          <button data-open-demo class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all"><iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon> Start demo call</button>
-          <a href="https://calendly.com/harvindersran101/intro-call" target="_blank" rel="noopener" class="mt-2.5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-sm shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Or book a human demo</a>
+          <button id="openAgentSignup" class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all"><iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon> Start demo call</button>
+          <a href="https://cal.com/harvinder-singh-lk2ahw/voxioai?overlayCalendar=true" target="_blank" rel="noopener" class="mt-2.5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-sm shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Book a human demo</a>
         </div>
       </div>
     </section>
@@ -485,7 +485,7 @@
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight leading-[1.1]">Hear it. Then put it on your phone line.</h2>
           <p class="mt-4 text-sm sm:text-base leading-7 text-slate-300 font-light">Book a 20-minute call and we'll demo a voice agent built for your exact use case — live, on the call.</p>
           <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <a href="https://calendly.com/harvindersran101/intro-call" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-0.5 transition-all">Book a call <iconify-icon icon="solar:arrow-right-linear" style="stroke-width:1.5;" class="text-lg"></iconify-icon></a>
+            <a href="https://cal.com/harvinder-singh-lk2ahw/voxioai?overlayCalendar=true" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-0.5 transition-all">Book a call <iconify-icon icon="solar:arrow-right-linear" style="stroke-width:1.5;" class="text-lg"></iconify-icon></a>
             <a href="#demo" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-white/[0.07] border border-white/15 text-white text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-white/[0.12] transition-all">Talk to the bot</a>
           </div>
         </div>
@@ -773,6 +773,31 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
   </script>
 
+  <!-- ===================== SIGNUP POPUP ===================== -->
+  <div id="agentSignupOverlay" class="hidden fixed inset-0 z-[100]" style="background:rgba(15,23,42,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .3s ease;">
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="relative w-full max-w-sm rounded-[2rem] bg-white/90 backdrop-blur-2xl border border-white shadow-[0_40px_100px_-30px_rgba(15,23,42,0.5),inset_0_2px_0_rgba(255,255,255,1)] p-5 sm:p-6" style="transform:translateY(16px);transition:transform .3s ease;">
+        <button id="agentSignupClose" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-500 transition">
+          <iconify-icon icon="solar:close-linear" class="text-base"></iconify-icon>
+        </button>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500 shadow-[inset_0_1px_0_white] mx-auto mb-3">
+            <iconify-icon icon="solar:phone-calling-rounded-linear" style="stroke-width:1.5;" class="text-2xl"></iconify-icon>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Start your demo</h3>
+          <p class="text-sm text-slate-600 font-light">Quick signup to talk with our agent</p>
+        </div>
+        <form id="agentSignupForm" class="space-y-3">
+          <input id="agent-name" type="text" placeholder="Your name" class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" required />
+          <input id="agent-email" type="email" placeholder="Email" class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" required />
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm font-medium shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200">
+            Continue <iconify-icon icon="solar:arrow-right-linear" style="stroke-width:1.5;" class="text-lg"></iconify-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- ===================== DEMO MODAL ===================== -->
   <div id="demoModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" style="backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(15,23,42,0.35);opacity:0;transition:opacity .3s ease;">
     <div class="relative w-full max-w-sm rounded-[2rem] bg-white/90 backdrop-blur-2xl border border-white shadow-[0_40px_100px_-30px_rgba(15,23,42,0.5),inset_0_2px_0_rgba(255,255,255,1)] p-5 sm:p-6" style="transform:translateY(16px);transition:transform .3s ease;">
@@ -825,6 +850,8 @@
   <style>
     #demoModal.modal-visible { opacity: 1 !important; }
     #demoModal.modal-visible > div { transform: translateY(0) !important; }
+    #agentSignupOverlay.modal-visible { opacity: 1 !important; }
+    #agentSignupOverlay.modal-visible > div > div { transform: translateY(0) !important; }
   </style>
 
   <script>
@@ -897,6 +924,76 @@
         errId:  'm-error',       btnId:  'm-submit', labelId: 'm-label',
         successId: 'modalSuccess', successNumId: 'modalSuccessNum', disclaimerId: 'modalDisclaimer'
       });
+    })();
+
+    /* ── Signup popup for agent call ──────────────────────────────────────── */
+    (function () {
+      var signupOverlay = document.getElementById('agentSignupOverlay');
+      var signupForm = document.getElementById('agentSignupForm');
+      var openBtn = document.getElementById('openAgentSignup');
+      var closeBtn = document.getElementById('agentSignupClose');
+      var modal = document.getElementById('demoModal');
+      var userSignedUp = false;
+
+      function openSignupPopup() {
+        signupOverlay.classList.remove('hidden');
+        setTimeout(function () { signupOverlay.classList.add('modal-visible'); }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSignupPopup() {
+        signupOverlay.classList.remove('modal-visible');
+        setTimeout(function () {
+          signupOverlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openSignupPopup);
+      if (closeBtn) closeBtn.addEventListener('click', closeSignupPopup);
+
+      signupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('agent-name').value.trim();
+        var email = document.getElementById('agent-email').value.trim();
+        if (!name || !email) return;
+        userSignedUp = true;
+        closeSignupPopup();
+        setTimeout(function () {
+          modal.classList.remove('hidden');
+          setTimeout(function () { modal.classList.add('modal-visible'); }, 10);
+          document.body.style.overflow = 'hidden';
+          startAgentTimer();
+        }, 300);
+      });
+
+      signupOverlay.addEventListener('click', function (e) {
+        if (e.target === signupOverlay) closeSignupPopup();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !signupOverlay.classList.contains('hidden')) closeSignupPopup();
+      });
+
+      function startAgentTimer() {
+        var timeDisplay = document.querySelector('.agent-timer-display');
+        if (!timeDisplay) {
+          var progressSpan = document.querySelector('#demoModal .mono.text-slate-700');
+          if (progressSpan) timeDisplay = progressSpan;
+        }
+        var secondsLeft = 180;
+        var timerInterval = setInterval(function () {
+          var mins = Math.floor(secondsLeft / 60);
+          var secs = secondsLeft % 60;
+          var timeStr = mins + ':' + (secs < 10 ? '0' : '') + secs;
+          if (timeDisplay) timeDisplay.textContent = timeStr + ' / 3:00';
+          if (secondsLeft <= 0) {
+            clearInterval(timerInterval);
+            if (timeDisplay) timeDisplay.textContent = '0:00 / 3:00';
+          }
+          secondsLeft--;
+        }, 1000);
+      }
     })();
   </script>
 </body>
