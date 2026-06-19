@@ -381,9 +381,9 @@
       <div class="vx-reveal mb-9 flex justify-center">
         <label class="relative flex items-center p-1 bg-[#e2e8f0] rounded-full cursor-pointer w-[14rem] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_1px_rgba(255,255,255,1)] border border-slate-300">
           <input type="checkbox" id="cur-toggle" class="sr-only" onchange="toggleCurrency()" />
-          <div id="cur-pill" class="absolute right-1 top-1 bottom-1 w-[calc(50%-0.25rem)] bg-slate-900 rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.25)] transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"></div>
-          <span id="cur-inr" class="relative w-1/2 text-center text-xs text-slate-400 py-2.5 z-10">INR (₹)</span>
+          <div id="cur-pill" class="absolute left-1 top-1 bottom-1 w-[calc(50%-0.25rem)] bg-slate-900 rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.25)] transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"></div>
           <span id="cur-usd" class="relative w-1/2 text-center text-xs text-white py-2.5 z-10">USD ($)</span>
+          <span id="cur-inr" class="relative w-1/2 text-center text-xs text-slate-400 py-2.5 z-10">INR (₹)</span>
         </label>
       </div>
 
@@ -715,8 +715,8 @@
     function toggleCurrency() {
       var cb = document.getElementById('cur-toggle');
       var isINR = cb.checked;
-      // pill: default right (USD), checked left (INR)
-      document.getElementById('cur-pill').style.transform = isINR ? 'translateX(-100%)' : 'translateX(0)';
+      // pill: default left (USD), checked right (INR)
+      document.getElementById('cur-pill').style.transform = isINR ? 'translateX(100%)' : 'translateX(0)';
       document.getElementById('cur-usd').className = 'relative w-1/2 text-center text-xs py-2.5 z-10 ' + (isINR ? 'text-slate-400' : 'text-white');
       document.getElementById('cur-inr').className = 'relative w-1/2 text-center text-xs py-2.5 z-10 ' + (isINR ? 'text-white' : 'text-slate-400');
       document.querySelectorAll('.cur-sym').forEach(function (s) { s.textContent = isINR ? '₹' : '$'; });
