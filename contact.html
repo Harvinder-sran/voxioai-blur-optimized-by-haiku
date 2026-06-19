@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — VoxioAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-white text-slate-900 min-h-screen antialiased">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 pt-3 sm:pt-4">
+      <div class="rounded-full bg-white/84 backdrop-blur-2xl border border-white/90 shadow-[0_14px_38px_-22px_rgba(15,23,42,0.42),inset_0_1px_0_rgba(255,255,255,1)] px-4 py-2 sm:py-3">
+        <div class="flex items-center justify-between gap-3">
+          <a href="/" class="flex items-center gap-2 group">
+            <span class="w-8 h-8 rounded-full bg-gradient-to-b from-white to-slate-100 border border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.06),inset_0_1px_0_white] flex items-center justify-center text-blue-600 shrink-0">
+              <iconify-icon icon="solar:microphone-3-bold" class="text-base"></iconify-icon>
+            </span>
+            <span class="mono text-sm font-semibold tracking-[-0.08em] text-slate-950 group-hover:text-blue-600 transition-colors">VoxioAI</span>
+          </a>
+          <a href="/" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-blue-600 transition-colors">
+            <iconify-icon icon="solar:arrow-left-linear" style="stroke-width:1.5;" class="text-sm"></iconify-icon>
+            Back to home
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-20">
+    <div class="mb-12 max-w-xl">
+      <p class="mono text-xs font-medium tracking-[-0.04em] text-blue-500 mb-3">GET IN TOUCH</p>
+      <h1 class="text-3xl sm:text-4xl font-light tracking-tight text-slate-950">Talk to us.</h1>
+      <p class="mt-4 text-base leading-7 text-slate-500 font-light">
+        Have a question, want to explore a custom voice agent for your business, or just curious how it all works? We reply within one business day.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-14 items-start">
+
+      <!-- Contact form -->
+      <div class="rounded-[1.75rem] bg-slate-50 border border-slate-100 p-6 sm:p-8">
+        <form id="contactForm" novalidate class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1.5">Your name</label>
+              <input id="c-name" name="name" required placeholder="Rahul Sharma"
+                class="w-full rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1.5">Email address</label>
+              <input id="c-email" name="email" type="email" required placeholder="rahul@company.com"
+                class="w-full rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1.5">Company / Business name</label>
+            <input id="c-company" name="company" placeholder="Optional"
+              class="w-full rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1.5">Message</label>
+            <textarea id="c-msg" name="message" required rows="5" placeholder="Tell us about your use case, call volume, or any questions..."
+              class="w-full rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition resize-none"></textarea>
+          </div>
+
+          <p id="c-error" class="hidden text-xs text-red-500"></p>
+
+          <button id="c-submit" type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all duration-300 disabled:opacity-60 disabled:pointer-events-none">
+            <span id="c-label">Send message</span>
+            <iconify-icon icon="solar:arrow-right-linear" style="stroke-width:1.5;" class="text-lg"></iconify-icon>
+          </button>
+
+          <p class="text-center text-[11px] text-slate-400 font-light">We typically reply within 1 business day.</p>
+        </form>
+
+        <!-- Success state -->
+        <div id="contactSuccess" class="hidden text-center py-6">
+          <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center mx-auto mb-4">
+            <iconify-icon icon="solar:check-circle-linear" style="stroke-width:1.5;" class="text-2xl text-emerald-500"></iconify-icon>
+          </div>
+          <p class="text-base font-medium text-slate-900">Message sent!</p>
+          <p class="mt-1 text-sm text-slate-500 font-light">We'll get back to you within one business day.</p>
+        </div>
+      </div>
+
+      <!-- Contact details -->
+      <div class="space-y-5">
+        <div class="rounded-[1.5rem] bg-slate-50 border border-slate-100 p-5">
+          <div class="flex items-start gap-3.5">
+            <span class="w-9 h-9 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 mt-0.5">
+              <iconify-icon icon="solar:letter-linear" style="stroke-width:1.5;" class="text-base"></iconify-icon>
+            </span>
+            <div>
+              <p class="text-xs font-medium text-slate-500 mb-0.5">Email</p>
+              <a href="mailto:hello@voxioai.com" class="text-sm text-slate-800 hover:text-blue-600 transition-colors">hello@voxioai.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[1.5rem] bg-slate-50 border border-slate-100 p-5">
+          <div class="flex items-start gap-3.5">
+            <span class="w-9 h-9 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 mt-0.5">
+              <iconify-icon icon="solar:calendar-linear" style="stroke-width:1.5;" class="text-base"></iconify-icon>
+            </span>
+            <div>
+              <p class="text-xs font-medium text-slate-500 mb-0.5">Book a call</p>
+              <a href="https://cal.com/harvinder-singh-lk2ahw/voxioai" target="_blank" rel="noopener" class="text-sm text-slate-800 hover:text-blue-600 transition-colors">Schedule a 20-min intro →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[1.5rem] bg-slate-50 border border-slate-100 p-5">
+          <div class="flex items-start gap-3.5">
+            <span class="w-9 h-9 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 mt-0.5">
+              <iconify-icon icon="solar:map-point-linear" style="stroke-width:1.5;" class="text-base"></iconify-icon>
+            </span>
+            <div>
+              <p class="text-xs font-medium text-slate-500 mb-0.5">Based in</p>
+              <p class="text-sm text-slate-800">Mumbai, India</p>
+              <p class="text-xs text-slate-400 font-light mt-0.5">Serving clients globally</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[1.5rem] bg-gradient-to-br from-blue-50 to-sky-50 border border-blue-100 p-5">
+          <p class="text-xs font-medium text-blue-600 mb-1">Want to hear the agent first?</p>
+          <p class="text-sm text-slate-600 font-light">Try our <a href="/#demo" class="text-blue-600 hover:underline">live demo call</a> on the home page — we'll call your phone within 10 seconds.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 pb-10">
+    <div class="rounded-[1.75rem] bg-slate-50 border border-slate-100 px-5 sm:px-8 py-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <a href="/" class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-full bg-gradient-to-b from-white to-slate-100 border border-slate-200 shadow-[inset_0_1px_0_white] flex items-center justify-center text-blue-600"><iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon></span>
+          <span class="mono text-sm font-semibold tracking-[-0.08em] text-slate-950">VoxioAI</span>
+        </a>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500">
+          <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+          <a href="/privacy" class="hover:text-blue-600 transition-colors">Privacy</a>
+          <a href="/terms" class="hover:text-blue-600 transition-colors">Terms</a>
+          <a href="/contact" class="text-blue-600">Contact</a>
+        </div>
+        <p class="text-[11px] text-slate-400 font-light">© 2026 VoxioAI</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('contactForm');
+      var errEl = document.getElementById('c-error');
+      var btn = document.getElementById('c-submit');
+      var label = document.getElementById('c-label');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errEl.classList.add('hidden');
+
+        var name = document.getElementById('c-name').value.trim();
+        var email = document.getElementById('c-email').value.trim();
+        var msg = document.getElementById('c-msg').value.trim();
+
+        if (name.length < 2) { errEl.textContent = 'Please enter your name.'; errEl.classList.remove('hidden'); return; }
+        if (!/^\S+@\S+\.\S+$/.test(email)) { errEl.textContent = 'Please enter a valid email.'; errEl.classList.remove('hidden'); return; }
+        if (msg.length < 10) { errEl.textContent = 'Please enter a message (at least 10 characters).'; errEl.classList.remove('hidden'); return; }
+
+        btn.disabled = true;
+        label.textContent = 'Sending…';
+
+        /* Simulated send — replace with real endpoint if needed */
+        setTimeout(function () {
+          form.classList.add('hidden');
+          document.getElementById('contactSuccess').classList.remove('hidden');
+        }, 1200);
+      });
+    })();
+  </script>
+
+</body>
+</html>
