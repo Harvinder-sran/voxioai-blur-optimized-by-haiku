@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -19,7 +20,7 @@
        Removed: UnicornStudio WebGL "water" background (laggy).
        Built mobile-first.
     ========================================================== */
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
     :target { scroll-margin-top: 6.5rem; }
     body { font-family: 'Inter', sans-serif; }
     .mono { font-family: 'JetBrains Mono', monospace; }
@@ -58,23 +59,17 @@
       .vx-dots,.vx-float,.vx-wave.is-playing .bar,.vx-marquee-track,.vx-pulse{animation:none!important}
       .vx-reveal{opacity:1;transform:none}
     }
-
-    /* Demo call modal */
-    @keyframes vxModalIn{from{opacity:0;transform:scale(0.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-    .vx-modal-card{animation:vxModalIn .22s cubic-bezier(.22,1,.36,1)}
-    @keyframes vxBdIn{from{opacity:0}to{opacity:1}}
-    .vx-modal-bd{animation:vxBdIn .18s ease}
   </style>
 </head>
 
-<body class="bg-white text-slate-900 min-h-screen relative overflow-x-hidden antialiased selection:bg-blue-100 selection:text-blue-900">
+<body class="bg-[#f3f5f8] text-slate-900 min-h-screen relative overflow-x-hidden antialiased selection:bg-blue-100 selection:text-blue-900">
 
   <!-- ===================== BACKGROUND (cursor-reactive blue flow, no WebGL) =====================
        JS fills #vxLayers with moving blue blobs. They wander on quasi-random paths, rotate &
        stretch, and react to the pointer. White wash keeps the headline (left) readable; the
        whole thing fades out below the hero. -->
   <div id="vxbg" class="fixed inset-0 z-0 overflow-hidden pointer-events-none"
-       style="background:white;-webkit-mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 100%)">
+       style="-webkit-mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 100%)">
     <div id="vxLayers" class="absolute inset-0"></div>
     <!-- white wash so the headline (left) stays clean and bright -->
     <div class="absolute top-[4%] -left-[14%] w-[50vw] h-[50vw] rounded-full bg-white/50 blur-[6rem]"></div>
@@ -87,8 +82,14 @@
       <div class="relative overflow-hidden rounded-full bg-white/84 backdrop-blur-2xl border border-white/90 shadow-[0_14px_38px_-22px_rgba(15,23,42,0.42),inset_0_1px_0_rgba(255,255,255,1)] px-2 sm:px-4 py-1.5 sm:py-3">
         <div class="relative z-10 flex items-center justify-between gap-2 sm:gap-3">
           <a href="#top" class="flex items-center gap-1.5 sm:gap-2.5 group">
-            <span class="w-7 sm:w-9 h-7 sm:h-9 rounded-full bg-gradient-to-b from-white to-slate-100 border border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.06),inset_0_1px_0_white] flex items-center justify-center text-blue-600 shrink-0">
-              <iconify-icon icon="solar:microphone-3-bold" class="text-base sm:text-lg"></iconify-icon>
+            <span class="w-7 sm:w-9 h-7 sm:h-9 rounded-xl sm:rounded-[0.65rem] bg-white border border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.06),inset_0_1px_0_white] flex items-center justify-center shrink-0">
+              <svg width="18" height="16" viewBox="0 0 58 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1"  y="19" width="7" height="12" rx="3.5" fill="#2563eb"/>
+                <rect x="13" y="11"  width="7" height="28" rx="3.5" fill="#2563eb"/>
+                <rect x="25" y="0"  width="7" height="50" rx="3.5" fill="#2563eb"/>
+                <rect x="37" y="11"  width="7" height="28" rx="3.5" fill="#2563eb"/>
+                <rect x="49" y="19" width="7" height="12" rx="3.5" fill="#2563eb"/>
+              </svg>
             </span>
             <span class="mono text-xs sm:text-sm font-semibold tracking-[-0.08em] text-slate-950 group-hover:text-blue-600 transition-colors">VoxioAI</span>
           </a>
@@ -122,7 +123,7 @@
   <main id="top" class="relative z-10">
 
     <!-- ===================== HERO ===================== -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-20">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-20 overflow-hidden">
       <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
 
         <!-- Copy -->
@@ -156,63 +157,50 @@
           </div>
         </div>
 
-        <!-- Hero call panel -->
-        <div class="relative">
-          <div class="absolute -inset-y-6 inset-x-0 sm:-inset-6 rounded-[2.5rem] bg-gradient-to-br from-blue-200/40 via-white/20 to-sky-200/30 blur-3xl pointer-events-none"></div>
-          <div class="relative rounded-[2rem] bg-[#f8fafc] border border-white shadow-[0_30px_80px_-35px_rgba(15,23,42,0.35),inset_0_2px_0_rgba(255,255,255,1)] p-3 sm:p-4">
-            <div class="rounded-[1.5rem] bg-gradient-to-b from-white to-slate-50 border border-slate-200 shadow-[inset_0_1px_0_white] overflow-hidden">
-              <div class="px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-slate-200/80">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 vx-pulse"></span>
-                  <span class="text-xs text-slate-600">Hear a live agent — on your phone</span>
-                </div>
-                <span class="mono text-[11px] text-slate-400 tracking-[-0.05em]">VOXIO AGENT</span>
-              </div>
-              <div class="p-4 sm:p-5">
-                <!-- "Call me now" demo form -->
-                <form id="demoForm" novalidate class="space-y-3">
-                  <input id="d-name" name="name" required placeholder="Your name" autocomplete="name"
-                    class="w-full rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition" />
-                  <input id="d-email" name="email" type="email" required placeholder="Email address" autocomplete="email"
-                    class="w-full rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition" />
-                  <div class="flex items-center gap-2">
-                    <span class="inline-flex items-center gap-1 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2.5 text-sm text-slate-500 shrink-0 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] select-none">🇮🇳 +91</span>
-                    <input id="d-phone" name="phone" inputmode="numeric" required placeholder="10-digit number" autocomplete="tel"
-                      class="flex-1 min-w-0 rounded-xl bg-white border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 transition" />
-                  </div>
-                  <p id="d-error" class="hidden text-red-500 text-xs px-1 leading-4"></p>
-                  <button id="d-submit" type="submit"
-                    class="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm font-medium shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
-                    <iconify-icon icon="solar:phone-calling-rounded-bold" class="text-lg"></iconify-icon>
-                    <span id="d-label">Call me now</span>
-                  </button>
-                  <p class="text-[11px] text-slate-400 font-light text-center leading-4">We'll call within ~10 seconds · 1 demo per number</p>
-                </form>
-                <!-- Success state (hidden until call dispatched) -->
-                <div id="demoSuccess" class="hidden text-center py-5 space-y-3">
-                  <div class="w-14 h-14 mx-auto rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
-                    <iconify-icon icon="solar:phone-calling-rounded-bold" class="text-2xl text-emerald-500"></iconify-icon>
-                  </div>
-                  <p class="text-base font-medium text-slate-900">Calling you now</p>
-                  <p id="demoSuccessNum" class="text-sm text-slate-500 font-light">Keep your phone handy.</p>
-                  <a href="https://cal.com/harvinder-singh-lk2ahw/voxioai" target="_blank" rel="noopener"
-                    class="inline-flex items-center gap-1.5 text-xs text-blue-500 hover:text-blue-600 transition-colors">Book a full demo <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon></a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Hero right: chat panel + demo form -->
+        <div class="relative flex flex-col gap-4 w-full min-w-0">
+          <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-blue-200/40 via-white/20 to-sky-200/30 blur-3xl pointer-events-none"></div>
 
-          <!-- floating status chips (flow below on mobile, no overflow) -->
-          <div class="mt-4 flex flex-wrap justify-center lg:justify-start gap-2.5">
-            <span class="vx-float inline-flex items-center gap-2 rounded-2xl bg-white/90 backdrop-blur border border-white px-3.5 py-2.5 shadow-[0_18px_38px_-22px_rgba(15,23,42,0.45),inset_0_1px_0_white]">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 vx-pulse"></span><span class="text-xs text-slate-700">Call connected</span>
-            </span>
-            <span class="inline-flex items-center gap-2 rounded-2xl bg-white/90 backdrop-blur border border-white px-3.5 py-2.5 shadow-[0_18px_38px_-22px_rgba(15,23,42,0.45),inset_0_1px_0_white]">
-              <iconify-icon icon="solar:bolt-circle-linear" style="stroke-width:1.5;" class="text-base text-blue-500"></iconify-icon><span class="text-xs text-slate-700">0.4s response</span>
-            </span>
-            <span class="inline-flex items-center gap-2 rounded-2xl bg-white/90 backdrop-blur border border-white px-3.5 py-2.5 shadow-[0_18px_38px_-22px_rgba(15,23,42,0.45),inset_0_1px_0_white]">
-              <iconify-icon icon="solar:users-group-rounded-linear" style="stroke-width:1.5;" class="text-base text-blue-500"></iconify-icon><span class="text-xs text-slate-700">Warm transfer</span>
-            </span>
+          <!-- Demo form widget -->
+          <div class="relative rounded-[2rem] bg-white/84 backdrop-blur border border-white shadow-[0_20px_50px_-28px_rgba(15,23,42,0.28),inset_0_2px_0_rgba(255,255,255,1)] p-5 sm:p-6">
+            <!-- header -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="relative w-10 h-10 shrink-0">
+                  <div class="absolute inset-0 rounded-full border-2 border-blue-300/50 animate-ping"></div>
+                  <div class="absolute inset-[3px] rounded-full border border-blue-200/60"></div>
+                  <div class="relative w-10 h-10 rounded-full bg-gradient-to-b from-white to-slate-50 border border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.08),inset_0_1px_0_white] flex items-center justify-center text-blue-500">
+                    <iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon>
+                  </div>
+                </div>
+                <span class="text-xs text-emerald-600 font-medium flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 vx-pulse inline-block"></span>Online
+                </span>
+              </div>
+              <span class="inline-flex items-center rounded-full bg-blue-50 border border-blue-100 px-2.5 py-1 text-[11px] font-medium text-blue-600">Live demo</span>
+            </div>
+
+            <h3 class="text-base font-semibold tracking-tight text-slate-900 mb-1">Talk to a Voxio agent now</h3>
+            <p class="text-xs text-slate-500 font-light mb-4">Enter your details and our AI agent calls you in seconds.</p>
+
+            <form id="heroDemo" class="space-y-2.5">
+              <input id="h-name" type="text" placeholder="Your name" class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" />
+              <input id="h-email" type="email" placeholder="Email" class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" />
+              <div class="flex gap-2">
+                <span class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-600 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] shrink-0">🇮🇳 +91</span>
+                <input id="h-phone" type="tel" placeholder="Phone number" class="flex-1 min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" />
+              </div>
+              <p id="h-error" class="hidden text-red-500 text-xs font-light"></p>
+              <button id="h-submit" type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm font-medium shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
+                <iconify-icon icon="solar:phone-calling-bold" class="text-base"></iconify-icon> <span id="h-label">Call me now</span>
+              </button>
+            </form>
+            <div id="heroSuccess" class="hidden text-center py-2">
+              <p class="text-slate-900 font-semibold text-base">Calling you now &#128222;</p>
+              <p id="heroSuccessNum" class="text-xs text-slate-500 mt-1.5 font-light">Keep your phone handy.</p>
+              <p class="text-[10px] text-slate-400 mt-3">The call rings within ~10 seconds.</p>
+            </div>
+            <p id="heroDisclaimer" class="mt-3 text-center text-[10px] text-slate-400 font-light">We'll call within ~60 seconds · 1 demo per number</p>
           </div>
         </div>
       </div>
@@ -332,8 +320,8 @@
             <div class="flex items-center justify-between text-xs text-slate-500 mb-1.5"><span class="font-light">Free demo minutes</span><span class="mono text-slate-700">3:00 / 3:00</span></div>
             <div class="h-2 rounded-full bg-slate-200/80 overflow-hidden shadow-[inset_0_1px_2px_rgba(15,23,42,0.08)]"><div class="h-full w-full rounded-full bg-gradient-to-r from-blue-400 to-blue-600"></div></div>
           </div>
-          <button id="openDemoModal" type="button" class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all"><iconify-icon icon="solar:phone-calling-rounded-bold" class="text-lg"></iconify-icon> Get a demo call</button>
-          <a href="#book" class="mt-2.5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-sm shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Or book a human demo</a>
+          <button data-open-demo class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all"><iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon> Start demo call</button>
+          <a href="https://calendly.com/harvindersran101/intro-call" target="_blank" rel="noopener" class="mt-2.5 w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-sm shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Or book a human demo</a>
         </div>
       </div>
     </section>
@@ -361,27 +349,6 @@
         </article>
       </div>
 
-      <!-- How it works -->
-      <div class="vx-reveal mt-12">
-        <p class="mono text-xs font-medium tracking-[-0.04em] text-blue-500 mb-5">HOW IT WORKS</p>
-        <div class="grid gap-4 sm:grid-cols-3">
-          <article class="rounded-[1.75rem] bg-white/62 border border-white p-5 sm:p-6 shadow-[0_10px_28px_-20px_rgba(15,23,42,0.24),inset_0_1px_0_white]">
-            <span class="mono inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">01</span>
-            <h3 class="mt-4 text-base font-medium text-slate-900">Build</h3>
-            <p class="mt-1.5 text-sm leading-6 text-slate-500 font-light">We script the agent around your calls, tone, and edge cases.</p>
-          </article>
-          <article class="rounded-[1.75rem] bg-white/62 border border-white p-5 sm:p-6 shadow-[0_10px_28px_-20px_rgba(15,23,42,0.24),inset_0_1px_0_white]">
-            <span class="mono inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">02</span>
-            <h3 class="mt-4 text-base font-medium text-slate-900">Train</h3>
-            <p class="mt-1.5 text-sm leading-6 text-slate-500 font-light">We tune voice, latency, and handoffs against real recordings.</p>
-          </article>
-          <article class="rounded-[1.75rem] bg-white/62 border border-white p-5 sm:p-6 shadow-[0_10px_28px_-20px_rgba(15,23,42,0.24),inset_0_1px_0_white]">
-            <span class="mono inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">03</span>
-            <h3 class="mt-4 text-base font-medium text-slate-900">Deploy</h3>
-            <p class="mt-1.5 text-sm leading-6 text-slate-500 font-light">Go live on your number, with monitoring and weekly tuning.</p>
-          </article>
-        </div>
-      </div>
     </section>
 
     <!-- ===================== INTEGRATIONS ===================== -->
@@ -389,20 +356,26 @@
       <p class="vx-reveal mono text-xs font-medium tracking-[-0.04em] text-slate-400 text-center mb-6">PLUGS INTO YOUR STACK</p>
       <div class="vx-marquee relative overflow-hidden rounded-[1.75rem] bg-white/62 border border-white py-5 shadow-[inset_0_1px_0_white]"
            style="mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent)">
-        <div class="vx-marquee-track gap-3 px-3">
+        <div class="vx-marquee-track gap-3">
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:twilio" class="text-base text-[#F22F46]"></iconify-icon> Twilio</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:hubspot" class="text-base text-[#FF7A59]"></iconify-icon> HubSpot</span>
-          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:googlecalendar" class="text-base text-[#4285F4]"></iconify-icon> Calendar</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:googlecalendar" class="text-base text-[#4285F4]"></iconify-icon> Google Calendar</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:salesforce" class="text-base text-[#00A1E0]"></iconify-icon> Salesforce</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:slack" class="text-base text-[#4A154B]"></iconify-icon> Slack</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:zapier" class="text-base text-[#FF4F00]"></iconify-icon> Zapier</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:zoho" class="text-base text-[#C8202B]"></iconify-icon> Zoho</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:whatsapp" class="text-base text-[#25D366]"></iconify-icon> WhatsApp</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:pipedrive" class="text-base text-[#1A1F38]"></iconify-icon> Pipedrive</span>
           <!-- duplicate set for seamless loop -->
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:twilio" class="text-base text-[#F22F46]"></iconify-icon> Twilio</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:hubspot" class="text-base text-[#FF7A59]"></iconify-icon> HubSpot</span>
-          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:googlecalendar" class="text-base text-[#4285F4]"></iconify-icon> Calendar</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:googlecalendar" class="text-base text-[#4285F4]"></iconify-icon> Google Calendar</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:salesforce" class="text-base text-[#00A1E0]"></iconify-icon> Salesforce</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:slack" class="text-base text-[#4A154B]"></iconify-icon> Slack</span>
           <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:zapier" class="text-base text-[#FF4F00]"></iconify-icon> Zapier</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:zoho" class="text-base text-[#C8202B]"></iconify-icon> Zoho</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:whatsapp" class="text-base text-[#25D366]"></iconify-icon> WhatsApp</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs text-slate-600 shadow-[inset_0_1px_0_white] shrink-0"><iconify-icon icon="simple-icons:pipedrive" class="text-base text-[#1A1F38]"></iconify-icon> Pipedrive</span>
         </div>
       </div>
       <p class="vx-reveal mt-4 text-xs text-slate-400 font-light text-center">Custom integrations via API / SFTP available on request.</p>
@@ -419,9 +392,9 @@
       <div class="vx-reveal mb-9 flex justify-center">
         <label class="relative flex items-center p-1 bg-[#e2e8f0] rounded-full cursor-pointer w-[14rem] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_1px_rgba(255,255,255,1)] border border-slate-300">
           <input type="checkbox" id="cur-toggle" class="sr-only" onchange="toggleCurrency()" />
-          <div id="cur-pill" class="absolute left-1 top-1 bottom-1 w-[calc(50%-0.25rem)] bg-gradient-to-b from-white to-slate-50 rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,1)] border border-slate-200 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"></div>
-          <span id="cur-usd" class="relative w-1/2 text-center text-xs text-slate-800 py-2.5 z-10">USD ($)</span>
+          <div id="cur-pill" class="absolute right-1 top-1 bottom-1 w-[calc(50%-0.25rem)] bg-slate-900 rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.25)] transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"></div>
           <span id="cur-inr" class="relative w-1/2 text-center text-xs text-slate-400 py-2.5 z-10">INR (₹)</span>
+          <span id="cur-usd" class="relative w-1/2 text-center text-xs text-white py-2.5 z-10">USD ($)</span>
         </label>
       </div>
 
@@ -430,13 +403,14 @@
         <article class="rounded-[2rem] bg-[#f8fafc] border border-white shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06),inset_0_2px_0_rgba(255,255,255,1)] hover:-translate-y-1 transition-all duration-500">
           <div class="p-6 sm:p-8 h-full flex flex-col">
             <h3 class="mono text-xs font-medium text-slate-400 uppercase tracking-widest mb-4">Starter</h3>
-            <div class="flex items-baseline text-slate-800"><span class="text-3xl font-normal cur-sym">$</span><span class="text-5xl font-normal tracking-tight price-val" data-usd="499" data-inr="39000">499</span><span class="text-xs font-light text-slate-400 ml-1">/mo</span></div>
-            <p class="mt-4 text-xs font-light text-slate-500 leading-relaxed">One voice agent, one use case. Perfect for a first deployment.</p>
-            <div class="my-6 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+            <div class="flex items-baseline text-slate-800"><span class="text-3xl font-normal cur-sym">$</span><span class="text-5xl font-normal tracking-tight price-val" data-usd="240" data-inr="20000">240</span><span class="text-xs font-light text-slate-400 ml-1">/month</span></div>
+            <p class="mt-2 text-xs font-medium text-blue-500">1,500 call minutes</p>
+            <div class="my-5 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
             <ul class="flex flex-col gap-y-3 flex-grow">
-              <li class="flex items-center gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg"></iconify-icon>1 inbound or outbound agent</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg"></iconify-icon>Up to 500 minutes / mo</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg"></iconify-icon>Recordings + transcripts</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>1 voice persona</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Basic script customization</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Summary reports via email or sheet</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Standard voices · 15+ languages</li>
             </ul>
             <a href="#book" class="mt-6 w-full text-center py-3 rounded-xl bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-xs shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Get started</a>
           </div>
@@ -446,31 +420,34 @@
           <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-to-b from-blue-400 to-blue-500 text-white text-[0.65rem] font-medium rounded-full shadow-[0_2px_6px_rgba(59,130,246,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] border border-blue-600 tracking-wide z-10">Most popular</span>
           <div class="p-6 sm:p-8 h-full flex flex-col">
             <h3 class="mono text-xs font-medium text-blue-500 uppercase tracking-widest mb-4 pt-1">Growth</h3>
-            <div class="flex items-baseline text-slate-800"><span class="text-3xl font-normal cur-sym">$</span><span class="text-5xl font-normal tracking-tight price-val" data-usd="1290" data-inr="99000">1290</span><span class="text-xs font-light text-slate-400 ml-1">/mo</span></div>
-            <p class="mt-4 text-xs font-light text-slate-500 leading-relaxed">Multiple agents, integrations, and tuning for growing call volume.</p>
-            <div class="my-6 h-px w-full bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+            <div class="flex items-baseline text-slate-800"><span class="text-3xl font-normal cur-sym">$</span><span class="text-5xl font-normal tracking-tight price-val" data-usd="600" data-inr="50000">600</span><span class="text-xs font-light text-slate-400 ml-1">/month</span></div>
+            <p class="mt-2 text-xs font-medium text-blue-500">7,500 call minutes</p>
+            <div class="my-5 h-px w-full bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
             <ul class="flex flex-col gap-y-3 flex-grow">
-              <li class="flex items-center gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg"></iconify-icon>Up to 3 agents</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg"></iconify-icon>Up to 3,000 minutes / mo</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg"></iconify-icon>CRM + calendar integrations</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg"></iconify-icon>Weekly tuning</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg shrink-0 mt-px"></iconify-icon>Up to 3 custom conversation flows</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg shrink-0 mt-px"></iconify-icon>2 voice personas</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg shrink-0 mt-px"></iconify-icon>CRM integration · Zoho, HubSpot, Salesforce</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg shrink-0 mt-px"></iconify-icon>Call recordings &amp; up to 300 live transfers</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-700"><iconify-icon icon="solar:check-circle-bold" class="text-blue-500 text-lg shrink-0 mt-px"></iconify-icon>Analytics dashboard</li>
             </ul>
-            <a href="#book" class="mt-6 w-full text-center py-3 rounded-xl bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-xs shadow-[0_8px_20px_-8px_rgba(59,130,246,0.5),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 transition-all">Book a call</a>
+            <a href="#book" class="mt-6 w-full text-center py-3 rounded-xl bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-xs shadow-[0_8px_20px_-8px_rgba(59,130,246,0.5),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 transition-all">Get started</a>
           </div>
         </article>
-        <!-- Scale -->
+        <!-- Scale / Enterprise -->
         <article class="rounded-[2rem] bg-[#f8fafc] border border-white shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06),inset_0_2px_0_rgba(255,255,255,1)] hover:-translate-y-1 transition-all duration-500">
           <div class="p-6 sm:p-8 h-full flex flex-col">
-            <h3 class="mono text-xs font-medium text-slate-400 uppercase tracking-widest mb-4">Scale</h3>
-            <div class="flex items-baseline text-slate-800"><span class="text-4xl font-normal tracking-tight">Custom</span></div>
-            <p class="mt-4 text-xs font-light text-slate-500 leading-relaxed">Unlimited agents, dedicated tuning, and SLAs for high volume.</p>
-            <div class="my-6 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+            <h3 class="mono text-xs font-medium text-slate-400 uppercase tracking-widest mb-4">Scale / Enterprise</h3>
+            <div class="text-3xl font-semibold tracking-tight text-slate-900">Custom pricing</div>
+            <p class="mt-2 text-xs font-medium text-blue-500">For high call volumes</p>
+            <div class="my-5 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
             <ul class="flex flex-col gap-y-3 flex-grow">
-              <li class="flex items-center gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg"></iconify-icon>Unlimited agents &amp; minutes</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg"></iconify-icon>Custom integrations (API/SFTP)</li>
-              <li class="flex items-center gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg"></iconify-icon>Dedicated success manager</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Custom volumes &amp; SLAs</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Private infrastructure / white-label</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Industry-specific AI training</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>Custom dashboards &amp; APIs</li>
+              <li class="flex items-start gap-3 text-xs font-light text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-blue-400 text-lg shrink-0 mt-px"></iconify-icon>24×7 dedicated support</li>
             </ul>
-            <a href="#book" class="mt-6 w-full text-center py-3 rounded-xl bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-xs shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Contact sales</a>
+            <a href="#book" class="mt-6 w-full text-center py-3 rounded-xl bg-gradient-to-b from-white to-slate-50 border border-slate-200 text-slate-700 text-xs shadow-[inset_0_1px_0_white] hover:from-slate-50 hover:to-slate-100 transition-all">Talk to us</a>
           </div>
         </article>
       </div>
@@ -516,7 +493,7 @@
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight leading-[1.1]">Hear it. Then put it on your phone line.</h2>
           <p class="mt-4 text-sm sm:text-base leading-7 text-slate-300 font-light">Book a 20-minute call and we'll demo a voice agent built for your exact use case — live, on the call.</p>
           <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <a href="https://cal.com/harvinder-singh-lk2ahw/voxioai" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-0.5 transition-all">Book a call <iconify-icon icon="solar:arrow-right-linear" style="stroke-width:1.5;" class="text-lg"></iconify-icon></a>
+            <a href="https://calendly.com/harvindersran101/intro-call" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm shadow-[0_10px_24px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-0.5 transition-all">Book a call <iconify-icon icon="solar:arrow-right-linear" style="stroke-width:1.5;" class="text-lg"></iconify-icon></a>
             <a href="#demo" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-white/[0.07] border border-white/15 text-white text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-white/[0.12] transition-all">Talk to the bot</a>
           </div>
         </div>
@@ -528,15 +505,23 @@
       <div class="rounded-[1.75rem] bg-white/62 border border-white px-5 sm:px-8 py-7 shadow-[inset_0_1px_0_white]">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
           <a href="#top" class="flex items-center gap-2.5">
-            <span class="w-9 h-9 rounded-full bg-gradient-to-b from-white to-slate-100 border border-slate-200 shadow-[inset_0_1px_0_white] flex items-center justify-center text-blue-600"><iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon></span>
+            <span class="w-9 h-9 rounded-xl bg-white border border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.06),inset_0_1px_0_white] flex items-center justify-center shrink-0">
+              <svg width="18" height="16" viewBox="0 0 58 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1"  y="19" width="7" height="12" rx="3.5" fill="#2563eb"/>
+                <rect x="13" y="11"  width="7" height="28" rx="3.5" fill="#2563eb"/>
+                <rect x="25" y="0"  width="7" height="50" rx="3.5" fill="#2563eb"/>
+                <rect x="37" y="11"  width="7" height="28" rx="3.5" fill="#2563eb"/>
+                <rect x="49" y="19" width="7" height="12" rx="3.5" fill="#2563eb"/>
+              </svg>
+            </span>
             <span class="mono text-sm font-semibold tracking-[-0.08em] text-slate-950">VoxioAI</span>
           </a>
           <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500">
             <a href="#work" class="hover:text-blue-600 transition-colors">Work</a>
             <a href="#pricing" class="hover:text-blue-600 transition-colors">Pricing</a>
-            <a href="/privacy" class="hover:text-blue-600 transition-colors">Privacy</a>
-            <a href="/terms" class="hover:text-blue-600 transition-colors">Terms</a>
-            <a href="/contact" class="hover:text-blue-600 transition-colors">Contact</a>
+            <a href="privacy.html" class="hover:text-blue-600 transition-colors">Privacy</a>
+            <a href="terms.html" class="hover:text-blue-600 transition-colors">Terms</a>
+            <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
           </div>
           <p class="text-[11px] text-slate-400 font-light">© 2026 VoxioAI</p>
         </div>
@@ -544,64 +529,6 @@
     </footer>
 
   </main>
-
-  <!-- ===================== DEMO CALL MODAL ===================== -->
-  <div id="demoModal" style="display:none" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
-    <!-- Backdrop: blurs everything behind -->
-    <div id="demoModalBackdrop" class="vx-modal-bd absolute inset-0 bg-slate-900/50 backdrop-blur-md"></div>
-    <!-- Card -->
-    <div class="vx-modal-card relative z-10 w-full max-w-sm bg-white rounded-[2rem] border border-slate-200/80 shadow-[0_40px_100px_-20px_rgba(15,23,42,0.55),inset_0_2px_0_rgba(255,255,255,1)] overflow-hidden">
-      <!-- Header -->
-      <div class="px-5 py-4 flex items-center justify-between border-b border-slate-100">
-        <div class="flex items-center gap-3">
-          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500 shadow-[inset_0_1px_0_white]">
-            <iconify-icon icon="solar:phone-calling-rounded-bold" class="text-lg"></iconify-icon>
-          </span>
-          <div>
-            <p class="text-sm font-medium text-slate-900">Get a demo call</p>
-            <p class="text-[11px] text-slate-400 font-light mt-0.5">We'll call your phone in ~10 seconds</p>
-          </div>
-        </div>
-        <button id="closeDemoModal" type="button" aria-label="Close"
-          class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-700 transition-colors shrink-0">
-          <iconify-icon icon="solar:close-linear" class="text-base"></iconify-icon>
-        </button>
-      </div>
-      <!-- Form body -->
-      <div class="p-5">
-        <form id="modalDemoForm" novalidate class="space-y-3">
-          <input id="m-name" name="name" required placeholder="Your name" autocomplete="name"
-            class="w-full rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 focus:bg-white transition" />
-          <input id="m-email" name="email" type="email" required placeholder="Email address" autocomplete="email"
-            class="w-full rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 focus:bg-white transition" />
-          <div class="flex items-center gap-2">
-            <span class="inline-flex items-center gap-1 rounded-xl bg-slate-100 border border-slate-200 px-3 py-2.5 text-sm text-slate-500 shrink-0 select-none shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]">🇮🇳 +91</span>
-            <input id="m-phone" name="phone" inputmode="numeric" required placeholder="10-digit number" autocomplete="tel"
-              class="flex-1 min-w-0 rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-300 focus:bg-white transition" />
-          </div>
-          <p id="m-error" class="hidden text-red-500 text-xs px-1 leading-4"></p>
-          <button id="m-submit" type="submit"
-            class="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm font-medium shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
-            <iconify-icon icon="solar:phone-calling-rounded-bold" class="text-lg"></iconify-icon>
-            <span id="m-label">Call me now</span>
-          </button>
-          <p class="text-[11px] text-slate-400 font-light text-center leading-4">We'll call within ~10 seconds · 1 demo per number</p>
-        </form>
-        <!-- Success state -->
-        <div id="modalSuccess" class="hidden text-center py-6 space-y-3">
-          <div class="w-14 h-14 mx-auto rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
-            <iconify-icon icon="solar:phone-calling-rounded-bold" class="text-2xl text-emerald-500"></iconify-icon>
-          </div>
-          <p class="text-base font-medium text-slate-900">Calling you now</p>
-          <p id="modalSuccessNum" class="text-sm text-slate-500 font-light">Keep your phone handy.</p>
-          <a href="https://cal.com/harvinder-singh-lk2ahw/voxioai" target="_blank" rel="noopener"
-            class="inline-flex items-center gap-1.5 text-xs text-blue-500 hover:text-blue-600 transition-colors">
-            Book a full demo <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ===================== SCRIPTS ===================== -->
   <script>
@@ -626,7 +553,7 @@
         var isMobile = matchMedia('(max-width: 767px), (pointer: coarse)').matches;
         var mount = document.createElement('div');
         mount.id = 'usMount';
-        mount.style.cssText = 'position:absolute;inset:0';
+        mount.style.cssText = 'position:absolute;inset:0;transform:translateY(-200px)';
         box.appendChild(mount);
 
         function fallback() { box.style.background = 'radial-gradient(60vw 60vw at 70% 18%, rgba(37,99,235,.30), transparent 60%)'; }
@@ -644,8 +571,8 @@
             elementId: 'usMount',
             filePath: 'scene-no-ripple.json',     // self-hosted cleaned scene (ripple removed at source)
             fps: isMobile ? 45 : 60,               // mobile fps cap (45 = smoother than 30, ~50% more work)
-            scale: 1,                              // keep FULL render res — scale<1 was the pixelation cause
-            dpi: isMobile ? 1 : 1.5,               // mobile pixel-ratio cap — big GPU save, stays crisp at scale 1
+            scale: 1,                              // original render scale
+            dpi: 1.5,                              // original dpi — same for all devices
             lazyLoad: false,
             production: true,
             interactivity: { mouse: { disableMobile: false, disabled: false } }
@@ -799,9 +726,10 @@
     function toggleCurrency() {
       var cb = document.getElementById('cur-toggle');
       var isINR = cb.checked;
-      document.getElementById('cur-pill').style.transform = isINR ? 'translateX(100%)' : 'translateX(0)';
-      document.getElementById('cur-usd').className = 'relative w-1/2 text-center text-xs py-2.5 z-10 ' + (isINR ? 'text-slate-400' : 'text-slate-800');
-      document.getElementById('cur-inr').className = 'relative w-1/2 text-center text-xs py-2.5 z-10 ' + (isINR ? 'text-slate-800' : 'text-slate-400');
+      // pill: default right (USD), checked left (INR)
+      document.getElementById('cur-pill').style.transform = isINR ? 'translateX(-100%)' : 'translateX(0)';
+      document.getElementById('cur-usd').className = 'relative w-1/2 text-center text-xs py-2.5 z-10 ' + (isINR ? 'text-slate-400' : 'text-white');
+      document.getElementById('cur-inr').className = 'relative w-1/2 text-center text-xs py-2.5 z-10 ' + (isINR ? 'text-white' : 'text-slate-400');
       document.querySelectorAll('.cur-sym').forEach(function (s) { s.textContent = isINR ? '₹' : '$'; });
       document.querySelectorAll('.price-val').forEach(function (el) {
         var v = isINR ? el.dataset.inr : el.dataset.usd;
@@ -819,163 +747,168 @@
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.vx-reveal').forEach(function (el) { io.observe(el); });
-  </script>
 
-  <script>
-    // ---- Demo call modal ----
-    (function () {
-      var modal    = document.getElementById('demoModal');
-      var backdrop = document.getElementById('demoModalBackdrop');
-      var openBtn  = document.getElementById('openDemoModal');
-      var closeBtn = document.getElementById('closeDemoModal');
-      var ENDPOINT = 'https://api.voxioai.com/api/demo-call';
-
-      function openModal() {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        document.getElementById('m-name').focus();
-      }
-
-      function closeModal() {
-        modal.style.display = 'none';
+    // Demo modal
+    var modal = document.getElementById('demoModal');
+    function openModal() {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { modal.classList.add('modal-visible'); }, 10);
+    }
+    function closeModal() {
+      modal.classList.remove('modal-visible');
+      setTimeout(function () {
+        modal.classList.add('hidden');
         document.body.style.overflow = '';
-        // reset to initial state
-        var form    = document.getElementById('modalDemoForm');
-        var success = document.getElementById('modalSuccess');
-        var errEl   = document.getElementById('m-error');
-        var btn     = document.getElementById('m-submit');
-        var lbl     = document.getElementById('m-label');
-        if (form)    { form.reset(); form.classList.remove('hidden'); }
-        if (success) { success.classList.add('hidden'); }
-        if (errEl)   { errEl.textContent = ''; errEl.classList.add('hidden'); }
-        if (btn)     { btn.disabled = false; }
-        if (lbl)     { lbl.textContent = 'Call me now'; }
-      }
-
-      if (openBtn)  openBtn.addEventListener('click', openModal);
-      if (closeBtn) closeBtn.addEventListener('click', closeModal);
-      if (backdrop) backdrop.addEventListener('click', closeModal);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
-      });
-
-      var form  = document.getElementById('modalDemoForm');
-      var errEl = document.getElementById('m-error');
-      var btn   = document.getElementById('m-submit');
-      var lbl   = document.getElementById('m-label');
-
-      if (!form) return;
-
-      function showErr(m) { errEl.textContent = m; errEl.classList.remove('hidden'); }
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        errEl.classList.add('hidden');
-
-        var name   = document.getElementById('m-name').value.trim();
-        var email  = document.getElementById('m-email').value.trim();
-        var digits = document.getElementById('m-phone').value.replace(/\D/g, '');
-
-        if (name.length < 2)               return showErr('Please enter your name.');
-        if (!/^\S+@\S+\.\S+$/.test(email)) return showErr('Please enter a valid email.');
-        if (digits.length !== 10)          return showErr('Enter a 10-digit Indian mobile number.');
-
-        var phone = '+91' + digits;
-        btn.disabled = true;
-        lbl.textContent = 'Connecting…';
-
-        try {
-          var res = await fetch(ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, email: email, phone: phone, source: 'website-demo-modal' }),
-          });
-
-          if (res.status === 429) {
-            var d = await res.json().catch(function () { return {}; });
-            throw new Error(d.detail || "You've already requested a demo recently. Try again in a little while.");
-          }
-          if (!res.ok) {
-            var d = await res.json().catch(function () { return {}; });
-            throw new Error(d.detail || 'Something went wrong. Please try again.');
-          }
-
-          form.classList.add('hidden');
-          var numEl = document.getElementById('modalSuccessNum');
-          if (numEl) numEl.textContent = 'Calling ' + phone + ' — keep your phone handy.';
-          document.getElementById('modalSuccess').classList.remove('hidden');
-
-        } catch (err) {
-          btn.disabled = false;
-          lbl.textContent = 'Call me now';
-          showErr(err.message || 'Network error — please try again.');
-        }
-      });
-    })();
+        // Reset modal form back to initial state
+        var mForm = document.getElementById('modalDemoForm');
+        var mSuccess = document.getElementById('modalSuccess');
+        var mDisc = document.getElementById('modalDisclaimer');
+        var mErr = document.getElementById('m-error');
+        var mBtn = document.getElementById('m-submit');
+        var mLabel = document.getElementById('m-label');
+        if (mForm) { mForm.reset(); mForm.classList.remove('hidden'); }
+        if (mSuccess) mSuccess.classList.add('hidden');
+        if (mDisc) mDisc.classList.remove('hidden');
+        if (mErr) { mErr.textContent = ''; mErr.classList.add('hidden'); }
+        if (mBtn) mBtn.disabled = false;
+        if (mLabel) mLabel.textContent = 'Call me now';
+      }, 300);
+    }
+    document.querySelectorAll('[data-open-demo]').forEach(function (el) { el.addEventListener('click', openModal); });
+    document.getElementById('demoModalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
   </script>
 
+  <!-- ===================== DEMO MODAL ===================== -->
+  <div id="demoModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" style="backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(15,23,42,0.35);opacity:0;transition:opacity .3s ease;">
+    <div class="relative w-full max-w-sm rounded-[2rem] bg-white/90 backdrop-blur-2xl border border-white shadow-[0_40px_100px_-30px_rgba(15,23,42,0.5),inset_0_2px_0_rgba(255,255,255,1)] p-5 sm:p-6" style="transform:translateY(16px);transition:transform .3s ease;">
+      <!-- close -->
+      <button id="demoModalClose" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-500 transition">
+        <iconify-icon icon="solar:close-linear" class="text-base"></iconify-icon>
+      </button>
+
+      <!-- header -->
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2.5">
+          <div class="relative w-10 h-10 shrink-0">
+            <div class="absolute inset-0 rounded-full border-2 border-blue-300/50 animate-ping"></div>
+            <div class="absolute inset-[3px] rounded-full border border-blue-200/60"></div>
+            <div class="relative w-10 h-10 rounded-full bg-gradient-to-b from-white to-slate-50 border border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.08),inset_0_1px_0_white] flex items-center justify-center text-blue-500">
+              <iconify-icon icon="solar:microphone-3-bold" class="text-lg"></iconify-icon>
+            </div>
+          </div>
+          <span class="text-xs text-emerald-600 font-medium flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 vx-pulse inline-block"></span>Online
+          </span>
+        </div>
+        <span class="inline-flex items-center rounded-full bg-blue-50 border border-blue-100 px-2.5 py-1 text-[11px] font-medium text-blue-600">Live demo</span>
+      </div>
+
+      <h3 class="text-base font-semibold tracking-tight text-slate-900 mb-1">Talk to a Voxio agent now</h3>
+      <p class="text-xs text-slate-500 font-light mb-4">Enter your details and our AI agent calls you in seconds.</p>
+
+      <form id="modalDemoForm" class="space-y-2.5">
+        <input id="m-name" type="text" placeholder="Your name" class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" />
+        <input id="m-email" type="email" placeholder="Email" class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" />
+        <div class="flex gap-2">
+          <span class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-600 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] shrink-0">🇮🇳 +91</span>
+          <input id="m-phone" type="tel" placeholder="Phone number" class="flex-1 min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-300 transition shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]" />
+        </div>
+        <p id="m-error" class="hidden text-red-500 text-xs font-light"></p>
+        <button id="m-submit" type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-700 text-white text-sm font-medium shadow-[0_10px_24px_rgba(59,130,246,0.26),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-blue-400 hover:to-blue-500 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
+          <iconify-icon icon="solar:phone-calling-bold" class="text-base"></iconify-icon> <span id="m-label">Call me now</span>
+        </button>
+      </form>
+      <div id="modalSuccess" class="hidden text-center py-2">
+        <p class="text-slate-900 font-semibold text-base">Calling you now &#128222;</p>
+        <p id="modalSuccessNum" class="text-xs text-slate-500 mt-1.5 font-light">Keep your phone handy.</p>
+        <p class="text-[10px] text-slate-400 mt-3">The call rings within ~10 seconds.</p>
+      </div>
+      <p id="modalDisclaimer" class="mt-3 text-center text-[10px] text-slate-400 font-light">We'll call within ~60 seconds · 1 demo per number</p>
+    </div>
+  </div>
+
+  <style>
+    #demoModal.modal-visible { opacity: 1 !important; }
+    #demoModal.modal-visible > div { transform: translateY(0) !important; }
+  </style>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/919306973714?text=Hi%20Harvinder!%20I%20visited%20VoxioAI%20and%20I%27m%20interested%20in%20automating%20my%20business%20calls%20with%20Voice%20Agents.%20Can%20we%20have%20a%20quick%20chat%3F" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.4)] hover:-translate-y-1 active:scale-95 transition-all duration-200" style="background:#25D366;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
   <script>
-    // ---- "Call me now" hero demo form ----
-    // POST https://api.voxioai.com/api/demo-call → dispatches VoxioAI Pitch Agent via LiveKit SIP
+    /* ── Demo call form handler ──────────────────────────────────────────── */
     (function () {
       var ENDPOINT = 'https://api.voxioai.com/api/demo-call';
 
-      var form   = document.getElementById('demoForm');
-      var errEl  = document.getElementById('d-error');
-      var btn    = document.getElementById('d-submit');
-      var label  = document.getElementById('d-label');
+      function wireForm(cfg) {
+        var form = document.getElementById(cfg.formId);
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var errEl  = document.getElementById(cfg.errId);
+          errEl.classList.add('hidden');
 
-      if (!form) return;
+          var name   = document.getElementById(cfg.nameId).value.trim();
+          var email  = document.getElementById(cfg.emailId).value.trim();
+          var digits = document.getElementById(cfg.phoneId).value.replace(/\D/g, '');
 
-      function showErr(m) {
-        errEl.textContent = m;
-        errEl.classList.remove('hidden');
-      }
+          function showErr(msg) { errEl.textContent = msg; errEl.classList.remove('hidden'); }
 
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        errEl.classList.add('hidden');
+          if (name.length < 2)               return showErr('Please enter your name.');
+          if (!/^\S+@\S+\.\S+$/.test(email)) return showErr('Please enter a valid email.');
+          if (digits.length !== 10)          return showErr('Enter a 10-digit Indian mobile number.');
 
-        var name   = document.getElementById('d-name').value.trim();
-        var email  = document.getElementById('d-email').value.trim();
-        var digits = document.getElementById('d-phone').value.replace(/\D/g, '');
+          var phone = '+91' + digits;
+          var btn   = document.getElementById(cfg.btnId);
+          var label = document.getElementById(cfg.labelId);
+          btn.disabled = true;
+          label.textContent = 'Connecting…';
 
-        if (name.length < 2)               return showErr('Please enter your name.');
-        if (!/^\S+@\S+\.\S+$/.test(email)) return showErr('Please enter a valid email.');
-        if (digits.length !== 10)          return showErr('Enter a 10-digit Indian mobile number.');
-
-        var phone = '+91' + digits;
-
-        btn.disabled = true;
-        label.textContent = 'Connecting…';
-
-        try {
-          var res = await fetch(ENDPOINT, {
+          fetch(ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, email: email, phone: phone, source: 'website-hero-demo' }),
+            body: JSON.stringify({ name: name, email: email, phone: phone, source: 'website-hero-demo' })
+          }).then(function (res) {
+            if (res.status === 429) {
+              return res.json().catch(function () { return {}; }).then(function (d) {
+                throw new Error(d.detail || 'You’ve already requested a demo recently. Try again in 15 minutes.');
+              });
+            }
+            if (!res.ok) {
+              return res.json().catch(function () { return {}; }).then(function (d) {
+                throw new Error(d.detail || 'Something went wrong placing the call. Please try again.');
+              });
+            }
+            form.classList.add('hidden');
+            var disc = document.getElementById(cfg.disclaimerId);
+            if (disc) disc.classList.add('hidden');
+            var sNum = document.getElementById(cfg.successNumId);
+            if (sNum) sNum.textContent = 'Calling ' + phone + ' — keep your phone handy.';
+            document.getElementById(cfg.successId).classList.remove('hidden');
+          }).catch(function (err) {
+            btn.disabled = false;
+            label.textContent = 'Call me now';
+            errEl.textContent = err.message || 'Network error — please try again.';
+            errEl.classList.remove('hidden');
           });
+        });
+      }
 
-          if (res.status === 429) {
-            var d429 = await res.json().catch(function () { return {}; });
-            throw new Error(d429.detail || "You've already requested a demo recently. Try again in a little while.");
-          }
-          if (!res.ok) {
-            var derr = await res.json().catch(function () { return {}; });
-            throw new Error(derr.detail || 'Something went wrong placing the call. Please try again.');
-          }
+      wireForm({
+        formId: 'heroDemo',      nameId: 'h-name',  emailId: 'h-email',  phoneId: 'h-phone',
+        errId:  'h-error',       btnId:  'h-submit', labelId: 'h-label',
+        successId: 'heroSuccess', successNumId: 'heroSuccessNum', disclaimerId: 'heroDisclaimer'
+      });
 
-          form.classList.add('hidden');
-          var numEl = document.getElementById('demoSuccessNum');
-          if (numEl) numEl.textContent = 'Calling ' + phone + ' — keep your phone handy.';
-          var successEl = document.getElementById('demoSuccess');
-          if (successEl) successEl.classList.remove('hidden');
-
-        } catch (err) {
-          btn.disabled = false;
-          label.textContent = 'Call me now';
-          showErr(err.message || 'Network error — please try again.');
-        }
+      wireForm({
+        formId: 'modalDemoForm', nameId: 'm-name',  emailId: 'm-email',  phoneId: 'm-phone',
+        errId:  'm-error',       btnId:  'm-submit', labelId: 'm-label',
+        successId: 'modalSuccess', successNumId: 'modalSuccessNum', disclaimerId: 'modalDisclaimer'
       });
     })();
   </script>
